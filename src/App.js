@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import styled from 'styled-components';
+import profileImg from '../src/profileImg.png';
+import Intro from './components/Intro';
+import Footer from './components/Footer';
+import Nav from './components/Nav';
+import React, { useState } from 'react';
+
+
+const AppContainer = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+  background: url(${profileImg});
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Roboto Slab';
+  position: relative;
+`;
 
 function App() {
+  const [isOpen, setisOpen] = useState(false);
+  const handleClick = () => {
+    setisOpen(!isOpen)
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <AppContainer>
+      <Nav handleClick={handleClick} isOpen={isOpen}/>
+      <Header />
+      <Intro />
+      <Footer />
+      </AppContainer>
   );
 }
 
